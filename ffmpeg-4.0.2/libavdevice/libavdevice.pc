@@ -1,0 +1,14 @@
+prefix=/home/dj/ffmpeg_build
+exec_prefix=${prefix}
+libdir=/home/dj/ffmpeg_build/lib
+includedir=/home/dj/ffmpeg_build/include
+
+Name: libavdevice
+Description: FFmpeg device handling library
+Version: 58.3.100
+Requires: libavfilter >= 7.16.100, libswscale >= 5.1.100, libpostproc >= 55.1.100, libavformat >= 58.12.100, libavcodec >= 58.18.100, libswresample >= 3.1.100, libavutil >= 56.14.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavdevice -lXv -lX11 -lXext -lm -lxcb -lXau -lXdmcp -lxcb-shm -lxcb -lXau -lXdmcp -lxcb-shape -lxcb -lXau -lXdmcp -lxcb-xfixes -lxcb-render -lxcb-shape -lxcb -lXau -lXdmcp -lasound -lm -ldl -lpthread -lrt -lSDL2 -Wl,--no-undefined -lm -ldl -lasound -lm -ldl -lpthread -lpulse-simple -lpulse -lsndio -lX11 -lXext -lXcursor -lXinerama -lXi -lXrandr -lXss -lXxf86vm -lwayland-egl -lwayland-client -lwayland-cursor -lxkbcommon -lpthread -lrt -lsndio
+Libs.private: 
+Cflags: -I${includedir}

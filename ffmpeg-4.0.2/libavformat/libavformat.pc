@@ -1,0 +1,14 @@
+prefix=/home/dj/ffmpeg_build
+exec_prefix=${prefix}
+libdir=/home/dj/ffmpeg_build/lib
+includedir=/home/dj/ffmpeg_build/include
+
+Name: libavformat
+Description: FFmpeg container format library
+Version: 58.12.100
+Requires: libavcodec >= 58.18.100, libswresample >= 3.1.100, libavutil >= 56.14.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavformat -lm -lz
+Libs.private: 
+Cflags: -I${includedir}

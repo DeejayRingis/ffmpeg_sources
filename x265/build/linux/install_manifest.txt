@@ -1,0 +1,5 @@
+/home/dj/ffmpeg_build/lib/libx265.a
+/home/dj/ffmpeg_build/include/x265.h
+/home/dj/ffmpeg_build/include/x265_config.h
+/home/dj/ffmpeg_build/lib/pkgconfig/x265.pc
+/home/dj/ffmpeg_build/bin/x265
