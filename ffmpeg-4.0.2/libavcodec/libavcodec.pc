@@ -1,0 +1,14 @@
+prefix=/home/dj/ffmpeg_build
+exec_prefix=${prefix}
+libdir=/home/dj/ffmpeg_build/lib
+includedir=/home/dj/ffmpeg_build/include
+
+Name: libavcodec
+Description: FFmpeg codec library
+Version: 58.18.100
+Requires: libswresample >= 3.1.100, libavutil >= 56.14.100
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavcodec -L/home/dj/ffmpeg_build/lib -lvpx -lm -lpthread -L/home/dj/ffmpeg_build/lib -lvpx -lm -lpthread -L/home/dj/ffmpeg_build/lib -lvpx -lm -lpthread -L/home/dj/ffmpeg_build/lib -lvpx -lm -lpthread -pthread -lm -lz -lvorbis -lm -logg -lvorbisenc -lvorbis -lm -logg -L/home/dj/ffmpeg_build/lib -lx264 -lpthread -lm -ldl -L/home/dj/ffmpeg_build/lib -lx265 -lstdc++ -lm -lgcc_s -lgcc -lgcc_s -lgcc -lrt -ldl -lnuma -lva
+Libs.private: 
+Cflags: -I${includedir}

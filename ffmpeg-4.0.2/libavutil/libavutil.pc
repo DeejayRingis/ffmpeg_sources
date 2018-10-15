@@ -1,0 +1,14 @@
+prefix=/home/dj/ffmpeg_build
+exec_prefix=${prefix}
+libdir=/home/dj/ffmpeg_build/lib
+includedir=/home/dj/ffmpeg_build/include
+
+Name: libavutil
+Description: FFmpeg utility library
+Version: 56.14.100
+Requires: 
+Requires.private: 
+Conflicts:
+Libs: -L${libdir}  -lavutil -pthread -lva -lva-drm -lva -lva-x11 -lX11 -lvdpau -lX11 -lm -lva
+Libs.private: 
+Cflags: -I${includedir}
