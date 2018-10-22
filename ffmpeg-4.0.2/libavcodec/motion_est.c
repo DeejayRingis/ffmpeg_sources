@@ -175,7 +175,7 @@ static av_always_inline int cmp_direct_inline(MpegEncContext *s, const int x, co
             d= 256*256*256*32;
     return d;
 }
-
+// int inlineCount=0;
 static av_always_inline int cmp_inline(MpegEncContext *s, const int x, const int y, const int subx, const int suby,
                       const int size, const int h, int ref_index, int src_index,
                       me_cmp_func cmp_func, me_cmp_func chroma_cmp_func, int qpel, int chroma){
@@ -225,6 +225,8 @@ static av_always_inline int cmp_inline(MpegEncContext *s, const int x, const int
             d += chroma_cmp_func(s, uvtemp  , src[1], uvstride, h>>1);
             d += chroma_cmp_func(s, uvtemp+8, src[2], uvstride, h>>1);
         }
+      //  inlineCount++;
+      //  printf("when i was called for the %d time i returned %d \n",inlineCount, d);
     return d;
 }
 
@@ -248,8 +250,10 @@ static int cmp_internal(MpegEncContext *s, const int x, const int y, const int s
                       const int size, const int h, int ref_index, int src_index,
                       me_cmp_func cmp_func, me_cmp_func chroma_cmp_func, const int flags){
     if(flags&FLAG_DIRECT){
+    	//printf("direct");
         return cmp_direct_inline(s,x,y,subx,suby,size,h,ref_index,src_index, cmp_func, chroma_cmp_func, flags&FLAG_QPEL);
     }else{
+    //	printf("inline \n");
         return cmp_inline(s,x,y,subx,suby,size,h,ref_index,src_index, cmp_func, chroma_cmp_func, flags&FLAG_QPEL, flags&FLAG_CHROMA);
     }
 }
@@ -263,13 +267,15 @@ static av_always_inline int cmp(MpegEncContext *s, const int x, const int y, con
     if(av_builtin_constant_p(flags) && av_builtin_constant_p(h) && av_builtin_constant_p(size)
        && av_builtin_constant_p(subx) && av_builtin_constant_p(suby)
        && flags==0 && h==16 && size==0 && subx==0 && suby==0){
+    //	printf("simple \n");
         return cmp_simple(s,x,y,ref_index,src_index, cmp_func, chroma_cmp_func);
     }else if(av_builtin_constant_p(subx) && av_builtin_constant_p(suby)
        && subx==0 && suby==0){
         return cmp_fpel_internal(s,x,y,size,h,ref_index,src_index, cmp_func, chroma_cmp_func,flags);
     }else{
+    //	printf("internal \n");
         return cmp_internal(s,x,y,subx,suby,size,h,ref_index,src_index, cmp_func, chroma_cmp_func, flags);
-    }
+    }//THIS IS IT
 }
 
 static int cmp_hpel(MpegEncContext *s, const int x, const int y, const int subx, const int suby,
@@ -881,9 +887,9 @@ static inline int get_penalty_factor(int lambda, int lambda2, int type){
         return 1;
     }
 }
-
+FILE *DJR;
 void ff_estimate_p_frame_motion(MpegEncContext * s,
-                                int mb_x, int mb_y)
+                                int mb_x, int mb_y) //WRITE PICTURES TO DISK HERE
 {
     MotionEstContext * const c= &s->me;
     uint8_t *pix, *ppix;
@@ -894,6 +900,7 @@ void ff_estimate_p_frame_motion(MpegEncContext * s,
     const int shift= 1+s->quarter_sample;
     int mb_type=0;
     Picture * const pic= &s->current_picture;
+  //  DJR=fopen("/home/dj/experiments/motion results.txt","a");
 
     init_ref(c, s->new_picture.f->data, s->last_picture.f->data, NULL, 16*mb_x, 16*mb_y, 0);
 
@@ -955,6 +962,9 @@ void ff_estimate_p_frame_motion(MpegEncContext * s,
             c->pred_x = P_LEFT[0];
             c->pred_y = P_LEFT[1];
         }
+    //    printf("Motion Block,  %d,%d \n",  mb_x, mb_y);
+    //    fprintf(DJR,"Motion Block,  %d,%d \n",  mb_x, mb_y);
+     //  fclose(DJR);
         dmin = ff_epzs_motion_search(s, &mx, &my, P, 0, 0, s->p_mv_table, (1<<16)>>shift, 0, 16);
     }
 
@@ -1057,12 +1067,14 @@ void ff_estimate_p_frame_motion(MpegEncContext * s,
 
     s->mb_type[mb_y*s->mb_stride + mb_x]= mb_type;
 }
-
+//static	   FILE *DJResults ;
+//static int DJCounter =0;
 int ff_pre_estimate_p_frame_motion(MpegEncContext * s,
                                     int mb_x, int mb_y)
 {
     MotionEstContext * const c= &s->me;
     int mx, my, dmin;
+  //  DJResults = fopen("Output.txt", "wb");
     int P[10][2];
     const int shift= 1+s->quarter_sample;
     const int xy= mb_x + mb_y*s->mb_stride;
@@ -1107,8 +1119,9 @@ int ff_pre_estimate_p_frame_motion(MpegEncContext * s,
 
     s->p_mv_table[xy][0] = mx<<shift;
     s->p_mv_table[xy][1] = my<<shift;
-
-    return dmin;
+ //   DJCounter++;
+  //  fclose(DJResults)
+;    return dmin;
 }
 
 static int estimate_motion_b(MpegEncContext *s, int mb_x, int mb_y,
@@ -1157,7 +1170,7 @@ static int estimate_motion_b(MpegEncContext *s, int mb_x, int mb_y,
         }else{
             mv_scale= ((s->pb_time - s->pp_time)<<16) / (s->pp_time<<shift);
         }
-
+    //    printf("ref_index: %d mv_scale: %d \n",ref_index,mv_scale);
         dmin = ff_epzs_motion_search(s, &mx, &my, P, 0, ref_index, s->p_mv_table, mv_scale, 0, 16);
     }
 

@@ -1422,7 +1422,11 @@ me_hex2:
 
         break;
     }
-
+    //PUT MY CASE HERE
+    case X265_DJ_SEARCH:
+    {
+        printf("Hi there, I am using DJ's motion estimation function\n");
+    }
     default:
         X265_CHECK(0, "invalid motion estimate mode\n");
         break;
