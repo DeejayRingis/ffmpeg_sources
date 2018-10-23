@@ -547,9 +547,9 @@ static av_always_inline int zero_search(MpegEncContext *s, int *best, int dmin,
   }
 
   int d;
-  const int dir = next_dir;
-  const int x = best[0];
-  const int y = best[1];
+  const int dir= next_dir;
+  const int x= best[0];
+  const int y= best[1];
   next_dir = -1;
 
   CHECK_MV(x, y)
@@ -1339,13 +1339,17 @@ static int flo_search(MpegEncContext *s, int *best, int dmin, int src_index,
   //	else if (s->pict_type = AV_PICTURE_TYPE_P)
   //		BorP = 2;
   fill_gt_mvs(s->coded_picture_number, ref_index);
-  int y = s->mb_y;
-  int x = s->mb_x;
+  int y;
+  y = s->mb_y;
+  int x;
+  x = s->mb_x;
   int bestx;
   int besty;
   int d;
-  int k = 0;
-  int dmintemp = UNKNOWN_FLOW_THRESH;
+  int k;
+  k = 0;
+  int dmintemp;
+  dmintemp = UNKNOWN_FLOW_THRESH;
   for (int j = (y * 16); j < (y + 16); j++)
     for (int i = (x * 16); i < (x + 16); i++) {
       if (unknown_flow(flo_mvs[j][i][0], flo_mvs[j][i][1])) {
@@ -1353,8 +1357,10 @@ static int flo_search(MpegEncContext *s, int *best, int dmin, int src_index,
         assert(0);
       }
 
-      int mv_x = round(flo_mvs[j][i][0]);
-      int mv_y = round(flo_mvs[j][i][1]);
+      int mv_x;
+      mv_x = round(flo_mvs[j][i][0]);
+      int mv_y;
+      mv_y = round(flo_mvs[j][i][1]);
       k++;
       CHECK_MV(mv_x, mv_y)
       if (dmin < dmintemp) {
@@ -1374,9 +1380,7 @@ static int my_search(MpegEncContext *s, int *best, int dmin, int src_index,
                      int flags) {
 
   FILE *DJ2;
-  FILE *DJ3;
   DJ2 = fopen("/home/dj/temp_flo/MBInfo.txt", "a");
-  //    DJ3=fopen("/home/dj/experiments/dminInfo.txt","a");
   int dTru;
   int dDia;
   dTru = dmin;
@@ -1427,7 +1431,7 @@ static int my_search(MpegEncContext *s, int *best, int dmin, int src_index,
 
   // printf ("after dia best %d %d %d %d \n", xTru, yTru ,xDia,yDia);
   //	printf ("%d %d \n", dTru, dDia);
-  int Thres = dDia;
+  int Thres = dDia +1000;
   //fprintf(DJ3,"%d %d %d %d %d \n", s->coded_picture_number,s->mb_x, s->mb_y,
    //dTru, dDia);
 
@@ -1479,16 +1483,14 @@ static av_always_inline int diamond_search(MpegEncContext *s, int *best,
                               penalty_factor, size, h, flags);
   } else if (c->dia_size < 2) {
     //   	printf("small \n");
-    //   	return truth_search(s, best, dmin, src_index, ref_index,
-    //   penalty_factor, size, h, flags);
     //  	return zero_search(s, best, dmin, src_index, ref_index,
     //  penalty_factor, size, h, flags);
     //return small_diamond_search(s, best, dmin, src_index, ref_index,
     //                            penalty_factor, size, h, flags);
-      return      my_search(s, best, dmin, src_index, ref_index,
-        penalty_factor, size, h, flags);
-    //	return flo_search(s, best, dmin, src_index, ref_index,
-    //  penalty_factor, size, h, flags);
+    //  return      my_search(s, best, dmin, src_index, ref_index,
+    //    penalty_factor, size, h, flags);
+    	return flo_search(s, best, dmin, src_index, ref_index,
+      penalty_factor, size, h, flags);
 
   } else if (c->dia_size > 1024) {
     printf("full \n");

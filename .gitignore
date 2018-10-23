@@ -1,4 +1,4 @@
-pack these files and commit the raw source
+
 # git has its own built in compression methods
 *.7z
 *.dmg
@@ -24,3 +24,24 @@ pack these files and commit the raw source
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+
+#my big files#
+ffmpeg-4.0.2/ffmpeg
+ffmpeg-4.0.2/ffmpeg_g
+ffmpeg-4.0.2/ffplay
+ffmpeg-4.0.2/ffplay_g
+ffmpeg-4.0.2/ffprobe
+ffmpeg-4.0.2/ffprobe_g
+ffmpeg-4.0.2/libavcodec/libavcodec.a
+

@@ -28,9 +28,9 @@ do
 		for Q in "${ARRAY_QP[@]}"
 		do
 			#run ffmpeg
-			ffmpeg -s:v 1024x436 -r 25 -i /home/dj/data/raw/${TYPE}/${SEQ}.yuv -c:v mpeg4 -pix_fmt yuv420p -psnr /home/dj/data/results/${TYPE}_${SEQ}_${Q}.mp4 -y
+			ffmpeg -s:v 1024x436 -r 25 -i /home/dj/data/raw/${TYPE}/${SEQ}.yuv -c:v mpeg4 -pix_fmt yuv420p -psnr /home/dj/data/results/${TYPE}_${SEQ}_${Q}_flo.mp4 -y
 		#rename MBinfo file
-		mv /home/dj/temp_flo/MBInfo.txt /home/dj/temp_flo/${TYPE}_${SEQ}_${Q}.csv
+		#mv /home/dj/temp_flo/MBInfo.txt /home/dj/temp_flo/${TYPE}_${SEQ}_${Q}_tweaked2.csv
 		done
 		#remove flo files
 		rm -r /home/dj/temp_flo/*.flo 
