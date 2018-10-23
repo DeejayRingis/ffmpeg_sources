@@ -470,8 +470,8 @@ static av_always_inline int small_diamond_search(MpegEncContext *s, int *best,
   LOAD_COMMON2
   unsigned map_generation = c->map_generation;
 
-  FILE *DJ;
-  DJ = fopen("DiamondInformation.txt", "a");
+  //FILE *DJ;
+  //DJ = fopen("DiamondInformation.txt", "a");
   cmpf = s->mecc.me_cmp[size];
   chroma_cmpf = s->mecc.me_cmp[size + 1];
 
@@ -506,9 +506,9 @@ static av_always_inline int small_diamond_search(MpegEncContext *s, int *best,
       CHECK_MV_DIR(x, y + 1, 3)
 
     if (next_dir == -1) {
-      fprintf(DJ, "%d %d %d %d %d %d %d \n", s->coded_picture_number, s->mb_x,
-              s->mb_y, best[0], best[1], src_index, ref_index);
-      fclose(DJ);
+     // fprintf(DJ, "%d %d %d %d %d %d %d \n", s->coded_picture_number, s->mb_x,
+     //         s->mb_y, best[0], best[1], src_index, ref_index);
+     // fclose(DJ);
       return dmin;
     }
   }
