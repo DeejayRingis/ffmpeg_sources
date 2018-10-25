@@ -470,8 +470,8 @@ static av_always_inline int small_diamond_search(MpegEncContext *s, int *best,
   LOAD_COMMON2
   unsigned map_generation = c->map_generation;
 
-  //FILE *DJ;
-  //DJ = fopen("DiamondInformation.txt", "a");
+  // FILE *DJ;
+  // DJ = fopen("DiamondInformation.txt", "a");
   cmpf = s->mecc.me_cmp[size];
   chroma_cmpf = s->mecc.me_cmp[size + 1];
 
@@ -506,9 +506,10 @@ static av_always_inline int small_diamond_search(MpegEncContext *s, int *best,
       CHECK_MV_DIR(x, y + 1, 3)
 
     if (next_dir == -1) {
-     // fprintf(DJ, "%d %d %d %d %d %d %d \n", s->coded_picture_number, s->mb_x,
-     //         s->mb_y, best[0], best[1], src_index, ref_index);
-     // fclose(DJ);
+      // fprintf(DJ, "%d %d %d %d %d %d %d \n", s->coded_picture_number,
+      // s->mb_x,
+      //         s->mb_y, best[0], best[1], src_index, ref_index);
+      // fclose(DJ);
       return dmin;
     }
   }
@@ -547,9 +548,9 @@ static av_always_inline int zero_search(MpegEncContext *s, int *best, int dmin,
   }
 
   int d;
-  const int dir= next_dir;
-  const int x= best[0];
-  const int y= best[1];
+  const int dir = next_dir;
+  const int x = best[0];
+  const int y = best[1];
   next_dir = -1;
 
   CHECK_MV(x, y)
@@ -723,7 +724,8 @@ static int umh_search(MpegEncContext *s, int *best, int dmin, int src_index,
   return hex_search(s, best, dmin, src_index, ref_index, penalty_factor, size,
                     h, flags, 2);
 }
-// static int truth_search(MpegEncContext *s, int *best, int dmin, int src_index,
+// static int truth_search(MpegEncContext *s, int *best, int dmin, int
+// src_index,
 //                         int ref_index, const int penalty_factor, int size,
 //                         int h, int flags) {
 
@@ -737,111 +739,163 @@ static int umh_search(MpegEncContext *s, int *best, int dmin, int src_index,
 //   // DJ=fopen(filename,"r"); //lrename motion results
 //   //  printf("i get here \n");
 //   // sprintf(filename,sizeof(filename),"
-//   // \"/home/dj/experiments/MVS_Input/MVS_temple_2_%d.txt\" ",frame); printf("%d
+//   // \"/home/dj/experiments/MVS_Input/MVS_temple_2_%d.txt\" ",frame);
+//   printf("%d
 //   // %s \n",frame, filename);
 //   //-----------------------------------------------------------------------------------------------------------------------
 //   if (s->coded_picture_number == 0)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_00.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_00.txt",
+//     "r");
 //   else if (s->coded_picture_number == 1)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_01.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_01.txt",
+//     "r");
 //   else if (s->coded_picture_number == 2)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_02.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_02.txt",
+//     "r");
 //   else if (s->coded_picture_number == 3)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_03.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_03.txt",
+//     "r");
 //   else if (s->coded_picture_number == 4)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_04.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_04.txt",
+//     "r");
 //   else if (s->coded_picture_number == 5)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_05.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_05.txt",
+//     "r");
 //   else if (s->coded_picture_number == 6)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_06.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_06.txt",
+//     "r");
 //   else if (s->coded_picture_number == 7)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_07.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_07.txt",
+//     "r");
 //   else if (s->coded_picture_number == 8)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_08.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_08.txt",
+//     "r");
 //   else if (s->coded_picture_number == 9)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_09.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_09.txt",
+//     "r");
 //   else if (s->coded_picture_number == 10)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_10.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_10.txt",
+//     "r");
 //   else if (s->coded_picture_number == 11)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_11.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_11.txt",
+//     "r");
 //   else if (s->coded_picture_number == 12)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_12.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_12.txt",
+//     "r");
 //   else if (s->coded_picture_number == 13)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_13.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_13.txt",
+//     "r");
 //   else if (s->coded_picture_number == 14)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_14.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_14.txt",
+//     "r");
 //   else if (s->coded_picture_number == 15)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_15.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_15.txt",
+//     "r");
 //   else if (s->coded_picture_number == 16)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_16.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_16.txt",
+//     "r");
 //   else if (s->coded_picture_number == 17)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_17.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_17.txt",
+//     "r");
 //   else if (s->coded_picture_number == 18)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_18.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_18.txt",
+//     "r");
 //   else if (s->coded_picture_number == 19)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_19.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_19.txt",
+//     "r");
 //   else if (s->coded_picture_number == 20)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_20.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_20.txt",
+//     "r");
 //   else if (s->coded_picture_number == 21)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_21.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_21.txt",
+//     "r");
 //   else if (s->coded_picture_number == 22)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_22.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_22.txt",
+//     "r");
 //   else if (s->coded_picture_number == 23)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_23.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_23.txt",
+//     "r");
 //   else if (s->coded_picture_number == 24)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_24.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_24.txt",
+//     "r");
 //   else if (s->coded_picture_number == 25)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_25.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_25.txt",
+//     "r");
 //   else if (s->coded_picture_number == 26)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_26.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_26.txt",
+//     "r");
 //   else if (s->coded_picture_number == 27)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_27.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_27.txt",
+//     "r");
 //   else if (s->coded_picture_number == 28)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_28.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_28.txt",
+//     "r");
 //   else if (s->coded_picture_number == 29)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_29.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_29.txt",
+//     "r");
 //   else if (s->coded_picture_number == 30)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_30.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_30.txt",
+//     "r");
 //   else if (s->coded_picture_number == 31)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_31.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_31.txt",
+//     "r");
 //   else if (s->coded_picture_number == 32)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_32.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_32.txt",
+//     "r");
 //   else if (s->coded_picture_number == 33)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_33.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_33.txt",
+//     "r");
 //   else if (s->coded_picture_number == 34)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_34.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_34.txt",
+//     "r");
 //   else if (s->coded_picture_number == 35)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_35.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_35.txt",
+//     "r");
 //   else if (s->coded_picture_number == 36)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_36.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_36.txt",
+//     "r");
 //   else if (s->coded_picture_number == 37)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_37.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_37.txt",
+//     "r");
 //   else if (s->coded_picture_number == 38)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_38.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_38.txt",
+//     "r");
 //   else if (s->coded_picture_number == 39)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_39.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_39.txt",
+//     "r");
 //   else if (s->coded_picture_number == 40)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_40.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_40.txt",
+//     "r");
 //   else if (s->coded_picture_number == 41)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_41.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_41.txt",
+//     "r");
 //   else if (s->coded_picture_number == 42)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_42.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_42.txt",
+//     "r");
 //   else if (s->coded_picture_number == 43)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_43.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_43.txt",
+//     "r");
 //   else if (s->coded_picture_number == 44)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_44.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_44.txt",
+//     "r");
 //   else if (s->coded_picture_number == 45)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_45.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_45.txt",
+//     "r");
 //   else if (s->coded_picture_number == 46)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_46.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_46.txt",
+//     "r");
 //   else if (s->coded_picture_number == 47)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_47.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_47.txt",
+//     "r");
 //   else if (s->coded_picture_number == 48)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_48.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_48.txt",
+//     "r");
 //   else if (s->coded_picture_number == 49)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_49.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_49.txt",
+//     "r");
 //   else if (s->coded_picture_number == 50)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_50.txt", "r");
+//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_50.txt",
+//     "r");
 //   //--------------------------------------------------------------------------------------------------------------------------------------------
 
 //   // printf("file might be opened? \n");
@@ -864,10 +918,11 @@ static int umh_search(MpegEncContext *s, int *best, int dmin, int src_index,
 //   int found;
 //   unsigned map_generation = c->map_generation;
 
-//   { /* ensure that the best point is in the MAP as h/qpel refinement needs it */
+//   { /* ensure that the best point is in the MAP as h/qpel refinement needs it
+//   */
 //     const int key = (best[1] << ME_MAP_MV_BITS) + best[0] + map_generation;
-//     const int index = ((best[1] << ME_MAP_SHIFT) + best[0]) & (ME_MAP_SIZE - 1);
-//     if (map[index] != key) { // this will be executed only very rarey
+//     const int index = ((best[1] << ME_MAP_SHIFT) + best[0]) & (ME_MAP_SIZE -
+//     1); if (map[index] != key) { // this will be executed only very rarey
 //       score_map[index] = cmp(s, best[0], best[1], 0, 0, size, h, ref_index,
 //                              src_index, cmpf, chroma_cmpf, flags);
 //       map[index] = key;
@@ -885,7 +940,8 @@ static int umh_search(MpegEncContext *s, int *best, int dmin, int src_index,
 //     fscanf(DJ, "%d %d %d %d %d \n ", &framenum, &mbxtemp, &mbytemp, &xtemp,
 //            &ytemp);
 
-//     //	  printf("searching for %d %d %d \n", s->coded_picture_number,s->mb_x,
+//     //	  printf("searching for %d %d %d \n",
+//     s->coded_picture_number,s->mb_x,
 //     //s->mb_y);
 //     //   printf("Read From file %d %d %d \n", framenum,mbxtemp, mbytemp );
 
@@ -894,7 +950,7 @@ static int umh_search(MpegEncContext *s, int *best, int dmin, int src_index,
 //       //			printf("Motion Vector is %d % d %d \n", xtemp,
 //       //ytemp,dmintemp);
 //       //       		printf("MV
-//       //       Found!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//       // Found!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //       //       \n");
 //       found = 1;
 //       best[0] = xtemp;
@@ -902,7 +958,8 @@ static int umh_search(MpegEncContext *s, int *best, int dmin, int src_index,
 //       //	dmin=cmp(s, best[0], best[1], 0, 0, size, h, ref_index,
 //       //src_index, cmpf, chroma_cmpf, flags);
 //       // INVESTIGATE THIS
-//       // -------------------------------------------------------------------------
+//       //
+//       -------------------------------------------------------------------------
 //       CHECK_MV(best[0], best[1])
 //       //------------------------------------------------------------------------
 //       // printf("%d %d %d %d %d %d \n", s->coded_picture_number, s->mb_x,
@@ -1394,7 +1451,7 @@ static int my_search(MpegEncContext *s, int *best, int dmin, int src_index,
   bestTempTru = best;
   bestTempDia = best;
   //	printf ("start best %d %d %d %d \n", bestTemp1[0],
-  //bestTemp1[1],bestTemp2[0],bestTemp2[1]);
+  // bestTemp1[1],bestTemp2[0],bestTemp2[1]);
   int penalty_factor_tempTru;
   int penalty_factor_tempDia;
   penalty_factor_tempTru = penalty_factor;
@@ -1431,27 +1488,27 @@ static int my_search(MpegEncContext *s, int *best, int dmin, int src_index,
 
   // printf ("after dia best %d %d %d %d \n", xTru, yTru ,xDia,yDia);
   //	printf ("%d %d \n", dTru, dDia);
-  int Thres = dDia +1000;
-  //fprintf(DJ3,"%d %d %d %d %d \n", s->coded_picture_number,s->mb_x, s->mb_y,
-   //dTru, dDia);
+  int Thres = dDia;
+  // fprintf(DJ3,"%d %d %d %d %d \n", s->coded_picture_number,s->mb_x, s->mb_y,
+  // dTru, dDia);
 
-  if (dTru <= Thres) {
+  if (dTru < Thres) {
     s = stempTru;
-  	fprintf(DJ2,"%d %d %d %d \n", s->coded_picture_number,s->mb_x, s->mb_y,
-  	0);
+    fprintf(DJ2, "%d, %d, %d, %d \n", s->coded_picture_number, s->mb_x, s->mb_y,
+            0);
     best[0] = xTru;
     best[1] = yTru;
     dmin = dTru;
     // truthCount++;
     //	printf( "Truth: %d
     //--------------------------------------------------------------- \n",
-    //truthCount); 	penalty_factor=penalty_factor_tempTru; 	printf ("Tru :
-    //returning mv  %d %d \n ", best[0], best[1]);
+    // truthCount); 	penalty_factor=penalty_factor_tempTru; 	printf ("Tru :
+    // returning mv  %d %d \n ", best[0], best[1]);
 
   } else {
     s = stempDia;
-    fprintf(DJ2,"%d %d %d %d  \n", s->coded_picture_number,s->mb_x, s->mb_y,
-   	 1);
+    fprintf(DJ2, "%d, %d, %d, %d  \n", s->coded_picture_number, s->mb_x, s->mb_y,
+            1);
     best[0] = xDia;
     best[1] = yDia;
     //	 penalty_factor=penalty_factor_tempDia;
@@ -1485,12 +1542,12 @@ static av_always_inline int diamond_search(MpegEncContext *s, int *best,
     //   	printf("small \n");
     //  	return zero_search(s, best, dmin, src_index, ref_index,
     //  penalty_factor, size, h, flags);
-    //return small_diamond_search(s, best, dmin, src_index, ref_index,
+    // return small_diamond_search(s, best, dmin, src_index, ref_index,
     //                            penalty_factor, size, h, flags);
-    //  return      my_search(s, best, dmin, src_index, ref_index,
-    //    penalty_factor, size, h, flags);
-    	return flo_search(s, best, dmin, src_index, ref_index,
-      penalty_factor, size, h, flags);
+      return      my_search(s, best, dmin, src_index, ref_index,
+        penalty_factor, size, h, flags);
+   // return flo_search(s, best, dmin, src_index, ref_index, penalty_factor, size,
+    //                  h, flags);
 
   } else if (c->dia_size > 1024) {
     printf("full \n");

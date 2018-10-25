@@ -8,12 +8,6 @@
 #rename mbinfo each time
 #replace temp_flo files each file
 
-
-TEMP_FLO_DIR = "/home/dj/temp_flo"
-INPUT_DIR = "home/dj/data/raw"
-OUTPUT_DIR = "/home/dj/data/results"
-FLO_DIR = "/home/dj/data/flow/flow"
-
 declare -a ARRAY_SEQS_TYPES=(albedo final)
 declare -a ARRAY_SEQS=(alley_1 ambush_5 bamboo_2 cave_4  market_5 mountain_1 shaman_3 temple_2 )
 declare -a ARRAY_QP=(2 3 5 7 10 15 20 25 30)
@@ -28,9 +22,9 @@ do
 		for Q in "${ARRAY_QP[@]}"
 		do
 			#run ffmpeg
-			ffmpeg -s:v 1024x436 -r 25 -i /home/dj/data/raw/${TYPE}/${SEQ}.yuv -c:v mpeg4 -pix_fmt yuv420p -psnr /home/dj/data/results/${TYPE}_${SEQ}_${Q}_flo.mp4 -y
+			ffmpeg -s:v 1024x436 -r 25 -i /home/dj/data/raw/${TYPE}/${SEQ}.yuv -c:v mpeg4 -pix_fmt yuv420p -g 100 -bf 0 -psnr /home/dj/data/results/${TYPE}_${SEQ}_${Q}_hybrid.mp4 -y
 		#rename MBinfo file
-		#mv /home/dj/temp_flo/MBInfo.txt /home/dj/temp_flo/${TYPE}_${SEQ}_${Q}_tweaked2.csv
+		mv /home/dj/temp_flo/MBInfo.txt /home/dj/temp_flo/${TYPE}_${SEQ}_${Q}_hybrid2.csv
 		done
 		#remove flo files
 		rm -r /home/dj/temp_flo/*.flo 
