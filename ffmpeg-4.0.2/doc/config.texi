@@ -476,7 +476,7 @@
 @set config-libxcb-shm yes
 @set config-libxcb-shape yes
 @set config-libxcb-xfixes yes
-@c @set config-lzma no
+@set config-lzma yes
 @c @set config-schannel no
 @set config-sdl2 yes
 @c @set config-securetransport no

@@ -724,315 +724,13 @@ static int umh_search(MpegEncContext *s, int *best, int dmin, int src_index,
   return hex_search(s, best, dmin, src_index, ref_index, penalty_factor, size,
                     h, flags, 2);
 }
-// static int truth_search(MpegEncContext *s, int *best, int dmin, int
-// src_index,
-//                         int ref_index, const int penalty_factor, int size,
-//                         int h, int flags) {
 
-//   FILE *DJ;
-
-//   //  char filename[1000];
-//   //  int frame;
-//   // frame=s->coded_picture_number;
-
-//   // sprintf(filename,"/home/dj/experiments/MVS_temple_%d.txt",frame);
-//   // DJ=fopen(filename,"r"); //lrename motion results
-//   //  printf("i get here \n");
-//   // sprintf(filename,sizeof(filename),"
-//   // \"/home/dj/experiments/MVS_Input/MVS_temple_2_%d.txt\" ",frame);
-//   printf("%d
-//   // %s \n",frame, filename);
-//   //-----------------------------------------------------------------------------------------------------------------------
-//   if (s->coded_picture_number == 0)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_00.txt",
-//     "r");
-//   else if (s->coded_picture_number == 1)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_01.txt",
-//     "r");
-//   else if (s->coded_picture_number == 2)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_02.txt",
-//     "r");
-//   else if (s->coded_picture_number == 3)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_03.txt",
-//     "r");
-//   else if (s->coded_picture_number == 4)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_04.txt",
-//     "r");
-//   else if (s->coded_picture_number == 5)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_05.txt",
-//     "r");
-//   else if (s->coded_picture_number == 6)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_06.txt",
-//     "r");
-//   else if (s->coded_picture_number == 7)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_07.txt",
-//     "r");
-//   else if (s->coded_picture_number == 8)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_08.txt",
-//     "r");
-//   else if (s->coded_picture_number == 9)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_09.txt",
-//     "r");
-//   else if (s->coded_picture_number == 10)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_10.txt",
-//     "r");
-//   else if (s->coded_picture_number == 11)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_11.txt",
-//     "r");
-//   else if (s->coded_picture_number == 12)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_12.txt",
-//     "r");
-//   else if (s->coded_picture_number == 13)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_13.txt",
-//     "r");
-//   else if (s->coded_picture_number == 14)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_14.txt",
-//     "r");
-//   else if (s->coded_picture_number == 15)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_15.txt",
-//     "r");
-//   else if (s->coded_picture_number == 16)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_16.txt",
-//     "r");
-//   else if (s->coded_picture_number == 17)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_17.txt",
-//     "r");
-//   else if (s->coded_picture_number == 18)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_18.txt",
-//     "r");
-//   else if (s->coded_picture_number == 19)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_19.txt",
-//     "r");
-//   else if (s->coded_picture_number == 20)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_20.txt",
-//     "r");
-//   else if (s->coded_picture_number == 21)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_21.txt",
-//     "r");
-//   else if (s->coded_picture_number == 22)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_22.txt",
-//     "r");
-//   else if (s->coded_picture_number == 23)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_23.txt",
-//     "r");
-//   else if (s->coded_picture_number == 24)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_24.txt",
-//     "r");
-//   else if (s->coded_picture_number == 25)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_25.txt",
-//     "r");
-//   else if (s->coded_picture_number == 26)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_26.txt",
-//     "r");
-//   else if (s->coded_picture_number == 27)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_27.txt",
-//     "r");
-//   else if (s->coded_picture_number == 28)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_28.txt",
-//     "r");
-//   else if (s->coded_picture_number == 29)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_29.txt",
-//     "r");
-//   else if (s->coded_picture_number == 30)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_30.txt",
-//     "r");
-//   else if (s->coded_picture_number == 31)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_31.txt",
-//     "r");
-//   else if (s->coded_picture_number == 32)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_32.txt",
-//     "r");
-//   else if (s->coded_picture_number == 33)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_33.txt",
-//     "r");
-//   else if (s->coded_picture_number == 34)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_34.txt",
-//     "r");
-//   else if (s->coded_picture_number == 35)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_35.txt",
-//     "r");
-//   else if (s->coded_picture_number == 36)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_36.txt",
-//     "r");
-//   else if (s->coded_picture_number == 37)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_37.txt",
-//     "r");
-//   else if (s->coded_picture_number == 38)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_38.txt",
-//     "r");
-//   else if (s->coded_picture_number == 39)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_39.txt",
-//     "r");
-//   else if (s->coded_picture_number == 40)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_40.txt",
-//     "r");
-//   else if (s->coded_picture_number == 41)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_41.txt",
-//     "r");
-//   else if (s->coded_picture_number == 42)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_42.txt",
-//     "r");
-//   else if (s->coded_picture_number == 43)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_43.txt",
-//     "r");
-//   else if (s->coded_picture_number == 44)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_44.txt",
-//     "r");
-//   else if (s->coded_picture_number == 45)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_45.txt",
-//     "r");
-//   else if (s->coded_picture_number == 46)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_46.txt",
-//     "r");
-//   else if (s->coded_picture_number == 47)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_47.txt",
-//     "r");
-//   else if (s->coded_picture_number == 48)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_48.txt",
-//     "r");
-//   else if (s->coded_picture_number == 49)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_49.txt",
-//     "r");
-//   else if (s->coded_picture_number == 50)
-//     DJ = fopen("/home/dj/experiments/MVS_Input/MVS_cave_4_median_50.txt",
-//     "r");
-//   //--------------------------------------------------------------------------------------------------------------------------------------------
-
-//   // printf("file might be opened? \n");
-//   assert(DJ != NULL);
-
-//   // a("file not opened \n");
-//   //     else
-//   //    	printf("file ok \n");
-
-//   int xtemp, ytemp, dmintemp, mbxtemp, mbytemp, framenum;
-//   xtemp, ytemp, dmintemp, mbxtemp, mbytemp, framenum = 0;
-//   MotionEstContext *const c = &s->me;
-//   me_cmp_func cmpf, chroma_cmpf;
-
-//   cmpf = s->mecc.me_cmp[size];
-//   chroma_cmpf = s->mecc.me_cmp[size + 1];
-//   LOAD_COMMON
-//   LOAD_COMMON2
-
-//   int found;
-//   unsigned map_generation = c->map_generation;
-
-//   { /* ensure that the best point is in the MAP as h/qpel refinement needs it
-//   */
-//     const int key = (best[1] << ME_MAP_MV_BITS) + best[0] + map_generation;
-//     const int index = ((best[1] << ME_MAP_SHIFT) + best[0]) & (ME_MAP_SIZE -
-//     1); if (map[index] != key) { // this will be executed only very rarey
-//       score_map[index] = cmp(s, best[0], best[1], 0, 0, size, h, ref_index,
-//                              src_index, cmpf, chroma_cmpf, flags);
-//       map[index] = key;
-//     }
-//   }
-
-//   int d;
-//   found = 0;
-//   // printf(" %d %d \n",h);
-//   if (h != 16) {
-//     printf("wrong MB size \n");
-//     return -1;
-//   }
-//   while (found == 0) {
-//     fscanf(DJ, "%d %d %d %d %d \n ", &framenum, &mbxtemp, &mbytemp, &xtemp,
-//            &ytemp);
-
-//     //	  printf("searching for %d %d %d \n",
-//     s->coded_picture_number,s->mb_x,
-//     //s->mb_y);
-//     //   printf("Read From file %d %d %d \n", framenum,mbxtemp, mbytemp );
-
-//     if (framenum == s->coded_picture_number && mbxtemp == s->mb_x &&
-//         mbytemp == s->mb_y) {
-//       //			printf("Motion Vector is %d % d %d \n", xtemp,
-//       //ytemp,dmintemp);
-//       //       		printf("MV
-//       // Found!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//       //       \n");
-//       found = 1;
-//       best[0] = xtemp;
-//       best[1] = ytemp;
-//       //	dmin=cmp(s, best[0], best[1], 0, 0, size, h, ref_index,
-//       //src_index, cmpf, chroma_cmpf, flags);
-//       // INVESTIGATE THIS
-//       //
-//       -------------------------------------------------------------------------
-//       CHECK_MV(best[0], best[1])
-//       //------------------------------------------------------------------------
-//       // printf("%d %d %d %d %d %d \n", s->coded_picture_number, s->mb_x,
-//       // s->mb_y, best[0], best[1], dmin); fprintf(DJ,"%d %d %d %d %d %d %d
-//       // %d\n", s->coded_picture_number, s->mb_x, s->mb_y,  best[0], best[1],
-//       // dmin, ref_index, src_index);
-//       fclose(DJ);
-//       return dmin;
-
-//       // dmin=0;
-//     }
-//     if (feof(DJ)) {
-//       found = 1;
-//       best[0] = 0;
-//       best[1] = 0;
-//       dmin = 1000000;
-//       //	printf("MV not on file!???????????????????????????????\n");
-//     }
-//     //  printf("Read Integer |%d|\n", xtemp );
-//     //  printf("Read Integer |%d|\n", ytemp );
-//     //  printf("Read Integer |%d|\n", dmintemp );
-//   }
-
-//   fclose(DJ);
-
-//   return dmin;
-// }
 static int full_search(MpegEncContext *s, int *best, int dmin, int src_index,
                        int ref_index, const int penalty_factor, int size, int h,
                        int flags) {
   MotionEstContext *const c = &s->me;
   me_cmp_func cmpf, chroma_cmpf;
-  /* FILE *DJ;
-      DJ=fopen("/home/dj/experiments/SintelResultsFull.bin","rb"); //rename
-     motion results int xtemp,ytemp,dmintemp,mbxtemp,mbytemp,framenum ;
-         xtemp,ytemp,dmintemp,mbxtemp,mbytemp,framenum=0;
-         int found;
-         found =0;
-         while(found==0)
-         {
-               fscanf(DJ,"%d %d %d %d %d %d \n ",&framenum,&mbxtemp, &mbytemp,
-     &xtemp, &ytemp,  &dmintemp);
-               //	printf("searching for %d %d %d \n",
-     s->coded_picture_number,s->mb_x, s->mb_y);
-               //    printf("Read From file %d %d %d \n", framenum,mbxtemp,
-     mbytemp ); if(framenum==s->coded_picture_number && mbxtemp==s->mb_x &&
-     mbytemp==s->mb_y)
-                                                       {
-                                                               //
-     printf("Motion Vector is %d % d %d \n", xtemp, ytemp,dmintemp);
-                                                       //	printf("MV
-     Found!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! \n");
-                                                               found=1;
-                                                               best[0]=xtemp;
-                                                               best[1]=ytemp;
-                                                               dmin=dmintemp;
 
-                                                               }
-                   if(feof(DJ)){
-                               found=1;
-                               best[0]=0;
-                               best[1]=0;
-                               dmin=0;
-                       //	printf("MV not on
-     file!???????????????????????????????\n");
-                        }
-                 //  printf("Read Integer |%d|\n", xtemp );
-                 //  printf("Read Integer |%d|\n", ytemp );
-                 //  printf("Read Integer |%d|\n", dmintemp );
-         }
-
-         fclose(DJ);
-      */
   LOAD_COMMON LOAD_COMMON2 unsigned map_generation = c->map_generation;
   int x, y, d;
   const int dia_size = c->dia_size & 0xFF;
@@ -1056,11 +754,6 @@ static int full_search(MpegEncContext *s, int *best, int dmin, int src_index,
   CHECK_CLIPPED_MV(x, y - 1);
   best[0] = x;
   best[1] = y;
-  // y printf("%d %d %d %d %d %d \n", s->coded_picture_number, s->mb_x, s->mb_y,
-  // best[0], best[1], dmin);
-  //  fprintf(DJ,"%d %d %d %d %d %d \n", s->coded_picture_number, s->mb_x,
-  //  s->mb_y, best[0], best[1], dmin);
-  // fclose(DJ);
 
   return dmin;
 }
@@ -1264,7 +957,8 @@ static float flo_mvs[4320][7680][2] = {0};
 #define UNKNOWN_FLOW_THRESH                                                    \
   1e9 // flow component is greater, it's considered unknown
 #define TAG_FLOAT 202021.25
-static const char *flow_files_dir = "/home/dj/temp_flo/frame_%04d.flo";
+static const char *flow_files_dir =
+    "/home/dj/temp_flo/frame_%04d_%04d.flo"; //_%04d_%04d.flo
 static void read_flow_file(const char *filename) {
 
   FILE *stream = NULL;
@@ -1351,8 +1045,8 @@ static int fill_gt_mvs(int i_frame_num, int ref_index) { //,int picturetype
 
     char filename[100];
 
-    sprintf(filename, flow_files_dir,
-            i_frame_num - 1); //, i_frame_num - ref_index );//note the offset
+    sprintf(filename, flow_files_dir, i_frame_num - 1,
+            i_frame_num - ref_index); // note the offset
 
     read_flow_file(filename);
 
@@ -1367,6 +1061,22 @@ static int unknown_flow(float u, float v) {
          isnan(u) || isnan(v);
 }
 
+#define TEMP_DIR_FRAME_BIN_PNGS "/home/dj/";
+static void decoded_frame(MpegEncContext *s, int ref_index) {
+  // take the most recent image and save as png
+
+  const char *frame_enc_bin = TEMP_DIR_FRAME_BIN_PNGS "frame_enc.bin";
+  FILE *w_frame = fopen(frame_enc_bin, "w");
+  // assert (w_frame);
+  // assert (sizeof(pixel) == sizeof(uint8_t)); //assert it's not 10bit video
+  // fwrite(h->mb.pic.p_fenc_plane[0], s->mb_height * mb_stride,
+  // sizeof(uint8_t), w_frame);
+  fclose(w_frame);
+
+  // call deepflo with decoded image and the target frame (do with P first)
+
+  // generate flow file
+}
 static int flo_search(MpegEncContext *s, int *best, int dmin, int src_index,
                       int ref_index, const int penalty_factor, int size, int h,
                       int flags) {
@@ -1395,6 +1105,9 @@ static int flo_search(MpegEncContext *s, int *best, int dmin, int src_index,
   //		BorP = 1;
   //	else if (s->pict_type = AV_PICTURE_TYPE_P)
   //		BorP = 2;
+  // put decoded frame call here-----------------------------------------------
+  // decoded_frame(s,ref_index);
+
   fill_gt_mvs(s->coded_picture_number, ref_index);
   int y;
   y = s->mb_y;
@@ -1488,14 +1201,20 @@ static int my_search(MpegEncContext *s, int *best, int dmin, int src_index,
 
   // printf ("after dia best %d %d %d %d \n", xTru, yTru ,xDia,yDia);
   //	printf ("%d %d \n", dTru, dDia);
+  // dDia=10000;
   int Thres = dDia;
   // fprintf(DJ3,"%d %d %d %d %d \n", s->coded_picture_number,s->mb_x, s->mb_y,
   // dTru, dDia);
 
-  if (dTru < Thres) {
+  if (dTru <= Thres) {
     s = stempTru;
+    int equal;
+    if (dTru = Thres) {
+      equal = 1;
+    } else
+      equal = 0;
     fprintf(DJ2, "%d, %d, %d, %d \n", s->coded_picture_number, s->mb_x, s->mb_y,
-            0);
+            equal);
     best[0] = xTru;
     best[1] = yTru;
     dmin = dTru;
@@ -1507,8 +1226,8 @@ static int my_search(MpegEncContext *s, int *best, int dmin, int src_index,
 
   } else {
     s = stempDia;
-    fprintf(DJ2, "%d, %d, %d, %d  \n", s->coded_picture_number, s->mb_x, s->mb_y,
-            1);
+    fprintf(DJ2, "%d, %d, %d, %d  \n", s->coded_picture_number, s->mb_x,
+            s->mb_y, 2);
     best[0] = xDia;
     best[1] = yDia;
     //	 penalty_factor=penalty_factor_tempDia;
@@ -1542,11 +1261,12 @@ static av_always_inline int diamond_search(MpegEncContext *s, int *best,
     //   	printf("small \n");
     //  	return zero_search(s, best, dmin, src_index, ref_index,
     //  penalty_factor, size, h, flags);
-    // return small_diamond_search(s, best, dmin, src_index, ref_index,
-    //                            penalty_factor, size, h, flags);
-      return      my_search(s, best, dmin, src_index, ref_index,
-        penalty_factor, size, h, flags);
-   // return flo_search(s, best, dmin, src_index, ref_index, penalty_factor, size,
+    return small_diamond_search(s, best, dmin, src_index, ref_index,
+                                penalty_factor, size, h, flags);
+    //  return      my_search(s, best, dmin, src_index, ref_index,
+    //    penalty_factor, size, h, flags);
+    // return flo_search(s, best, dmin, src_index, ref_index, penalty_factor,
+    // size,
     //                  h, flags);
 
   } else if (c->dia_size > 1024) {
@@ -1554,7 +1274,7 @@ static av_always_inline int diamond_search(MpegEncContext *s, int *best,
     return full_search(s, best, dmin, src_index, ref_index, penalty_factor,
                        size, h, flags);
   } else if (c->dia_size > 768) {
-    printf("umh \n");
+    printf(" \n");
 
     return umh_search(s, best, dmin, src_index, ref_index, penalty_factor, size,
                       h, flags);
