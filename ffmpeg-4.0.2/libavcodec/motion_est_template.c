@@ -1266,8 +1266,7 @@ static av_always_inline int diamond_search(MpegEncContext *s, int *best,
     //  return      my_search(s, best, dmin, src_index, ref_index,
     //    penalty_factor, size, h, flags);
     // return flo_search(s, best, dmin, src_index, ref_index, penalty_factor,
-    // size,
-    //                  h, flags);
+    // size, h, flags);
 
   } else if (c->dia_size > 1024) {
     printf("full \n");

@@ -23,8 +23,8 @@ do
 		for Q in "${ARRAY_QP[@]}"
 		do
 			#run ffmpeg
-			#ffmpeg -s:v 1024x436 -r 25 -i /home/dj/data/raw/${TYPE}/${SEQ}.yuv -c:v mpeg4 -q ${Q} -pix_fmt yuv420p -g 100 -bf 1 -vframes 200 -psnr /home/dj/data/results/${TYPE}_${SEQ}_${Q}_b1_flo.mp4 -y
-			ffmpeg -s:v 1024x436 -r 25 -i /home/dj/data/raw/${TYPE}/${SEQ}.yuv -c:v libvpx-vp9 -crf $Q -b:v 0 -psnr -bf 1 /home/dj/data/results/${TYPE}_${SEQ}_${Q}_b1_block.webm
+			ffmpeg -s:v 1024x436 -r 25 -i /home/dj/data/raw/${TYPE}/${SEQ}.yuv -c:v mpeg4 -q ${Q} -pix_fmt yuv420p -g 100 -bf 1 -vframes 200 -psnr /home/dj/data/results/${TYPE}_${SEQ}_${Q}_b1_flo.mp4 -y
+			#ffmpeg -s:v 1024x436 -r 25 -i /home/dj/data/raw/${TYPE}/${SEQ}.yuv -c:v libvpx-vp9 -crf $Q -b:v 0 -psnr -bf 1 /home/dj/data/results/${TYPE}_${SEQ}_${Q}_b1_block.webm
 		#rename MBinfo file
 		mv /home/dj/temp_flo/MBInfo.txt /home/dj/temp_flo/${TYPE}_${SEQ}_${Q}_b1_flo.csv
 		done
